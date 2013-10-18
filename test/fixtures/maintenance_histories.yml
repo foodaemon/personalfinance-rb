@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vechicle_id: 1
+  mileage: 1
+  item: MyString
+  item_description: MyString
+  maintenance_date: 2013-03-04
+  repair_shop: MyString
+  repair_shop_location: MyString
+  repair_shop_phone: MyString
+  maintenance_cost: 1.5
+
+two:
+  vechicle_id: 1
+  mileage: 1
+  item: MyString
+  item_description: MyString
+  maintenance_date: 2013-03-04
+  repair_shop: MyString
+  repair_shop_location: MyString
+  repair_shop_phone: MyString
+  maintenance_cost: 1.5

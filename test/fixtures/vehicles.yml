@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  year: 2013-03-04
+  make: MyString
+  model: MyString
+  color: MyString
+  transmission: MyString
+  license_plate_number: MyString
+  vin: MyString
+  purchased_date: MyString
+  purchased_milage: 1
+  purchased_from: MyString
+  purchased_detail: MyText
+
+two:
+  year: 2013-03-04
+  make: MyString
+  model: MyString
+  color: MyString
+  transmission: MyString
+  license_plate_number: MyString
+  vin: MyString
+  purchased_date: MyString
+  purchased_milage: 1
+  purchased_from: MyString
+  purchased_detail: MyText

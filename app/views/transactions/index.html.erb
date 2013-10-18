@@ -1,0 +1,93 @@
+<!-- Tables
+================================================== -->
+<section id="transaction-list">
+  <div class="row">
+    <%= link_to(new_transaction_path) do %>
+        <button type="button" class="btn btn-success">
+          <span class="glyphicon glyphicon-file"></span> New Transaction
+        </button>
+    <% end %>
+  </div>
+  <div class="row">
+    <form class="form-inline">
+      <br />
+      <div>
+        <input type="hidden" id="year_selected" value="<%= @year %>" />
+        <select id="date_year" class='span3 input-sm' name='date[year]'></select>
+
+        <input type="hidden" id="month_selected" value="<%= @month %>" />
+        <select id="date_month" class='span3 input-sm' name='date[month]'></select>
+        <input type="hidden" id="transactions_url" value="<%= transactions_url %>" />
+        <button id="view_date" class="btn btn-primary" type="button">
+          <span class="glyphicon glyphicon-hand-up"></span> Go
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Transactions</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-responsive table-condensed">
+          <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @transactions.each do |transaction| %>
+              <tr>
+                <td><%= transaction.date %></td>
+                <td><%= transaction.description %></td>
+                <td><%= transaction.category.name %></td>
+                <td>
+                  <% if transaction.is_income? %>
+                      <span class="badge badge-success"><%= transaction.amount %></span>
+                  <% else %>
+                      <span class="badge badge-important"><%= transaction.amount %></span>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to edit_transaction_path(transaction), :class => 'btn btn-primary' do %>
+                      <i class="glyphicon glyphicon-edit"></i> Edit
+                  <% end %>
+                  <%= link_to transaction, method: :delete, data: { confirm: 'Are you sure?' },
+                              :class => 'btn btn-small btn-danger' do %>
+                      <i class="glyphicon glyphicon-trash"></i> Delete
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      Total Income: <span class="badge badge-success"><%= @total_income %></span>
+      Total Expenses: <span class="badge badge-important"><%= @total_expenses %></span>
+    </div>
+    <br />
+  </div>
+</section>
+
+<section id="expenses-chart">
+  <script src="http://www.amcharts.com/lib/3/amcharts.js" type="text/javascript"></script>
+  <script src="http://www.amcharts.com/lib/3/pie.js" type="text/javascript"></script>
+  <div id="chartdiv" class="row" style="width: 100%; height: 362px;"></div>
+</section>

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vechicle:</strong>
+  <%= @maintenance_history.vechicle_id %>
+</p>
+
+<p>
+  <strong>Mileage:</strong>
+  <%= @maintenance_history.mileage %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @maintenance_history.item %>
+</p>
+
+<p>
+  <strong>Item description:</strong>
+  <%= @maintenance_history.item_description %>
+</p>
+
+<p>
+  <strong>Maintenance date:</strong>
+  <%= @maintenance_history.maintenance_date %>
+</p>
+
+<p>
+  <strong>Repair shop:</strong>
+  <%= @maintenance_history.repair_shop %>
+</p>
+
+<p>
+  <strong>Repair shop location:</strong>
+  <%= @maintenance_history.repair_shop_location %>
+</p>
+
+<p>
+  <strong>Repair shop phone:</strong>
+  <%= @maintenance_history.repair_shop_phone %>
+</p>
+
+<p>
+  <strong>Maintenance cost:</strong>
+  <%= @maintenance_history.maintenance_cost %>
+</p>
+
+
+<%= link_to 'Edit', edit_maintenance_history_path(@maintenance_history) %> |
+<%= link_to 'Back', maintenance_histories_path %>

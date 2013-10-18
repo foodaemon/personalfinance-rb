@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="/assets/favicon.png">
+
+  <title>Personal Finance</title>
+
+  <!-- Bootstrap core CSS -->
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application', params[:controller] %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><i class="glyphicon glyphicon-usd"></i> Personal Finance</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+        <li><a href="/transactions"><i class="glyphicon glyphicon-list-alt"></i> Transactions</a></li>
+        <li><a href="/maintenance_histories"><i class="glyphicon glyphicon-flag"></i> Auto History</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-cog"></i> Settings <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/vehicles"><i class="glyphicon glyphicon-plane"></i> Vehicles</a></li>
+            <li><a href="/categories"><i class="glyphicon glyphicon-th-list"></i> Categories</a></li>
+            <li><a href="/users"><i class="glyphicon glyphicon-user"></i> Users</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <% if current_user %>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-user"></i><%= current_user.email %><b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a> </li>
+            <li><a href="#"><i class="glyphicon glyphicon-wrench"></i> Profile Settings</a></li>
+          </ul>
+         <% end %>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<div class="container theme-showcase">
+  <%= render 'layouts/messages' %>
+  <%= yield %>
+</div> <!-- /container -->
+<hr>
+
+<footer>
+  <p align="center">&copy; Robin Tiwari 2013</p>
+</footer>
+</body>
+</html>

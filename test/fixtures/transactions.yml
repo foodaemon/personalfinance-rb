@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2013-03-04
+  description: MyString
+  category_id: 1
+  amount: 1.5
+  is_income: false
+  comments: MyText
+
+two:
+  date: 2013-03-04
+  description: MyString
+  category_id: 1
+  amount: 1.5
+  is_income: false
+  comments: MyText

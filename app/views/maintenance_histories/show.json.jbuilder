@@ -1,0 +1,1 @@
+json.extract! @maintenance_history, :vechicle_id, :mileage, :item, :item_description, :maintenance_date, :repair_shop, :repair_shop_location, :repair_shop_phone, :maintenance_cost, :created_at, :updated_at

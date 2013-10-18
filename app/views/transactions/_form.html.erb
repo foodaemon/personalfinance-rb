@@ -1,0 +1,55 @@
+<div class="panel panel-success">
+  <div class="panel-heading">New Transaction</div>
+  <div class="panel-body">
+    <%= form_for(@transaction) do |f| %>
+        <% if @transaction.errors.any? %>
+            <div id="error_explanation" class="alert alert-error">
+              <h2><%= pluralize(@transaction.errors.count, 'error') %> prohibited this transaction from being
+                saved:</h2>
+              <ul>
+                <% @transaction.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :date %> <br/>
+          <%= f.date_select :date, {:start_year => 2000}, {:class => 'selectpicker'} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_field :description, :class => 'span3 form-control', :placeholder => 'e.g. Walmart' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :category_id %><br/>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {},{:class => 'selectpicker'}) %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :amount %>
+          <%= f.text_field :amount, :class => 'span3 form-control', :placeholder => 'Amount e.g. 2.50' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :is_income %>
+          <%= f.check_box :is_income %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :comments %>
+          <%= f.text_area :comments, :size => '30x5', :class => 'span3 form-control', :placeholder => 'comments' %>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-file"></span> Create Transaction
+          </button>
+        </div>
+    <% end %>
+  </div>
+</div> <!-- row-fluid -->
+

@@ -1,0 +1,65 @@
+<section id="forms">
+  <div class="sub-header">
+    <h2>Maintenance History</h2>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12">
+      <%= form_for(@maintenance_history) do |f| %>
+          <% if @maintenance_history.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@maintenance_history.errors.count, 'error') %> prohibited this maintenance_history from being saved:</h2>
+
+                <ul>
+                  <% @maintenance_history.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+          <div class="control-group">
+            <%= f.label :vehicle_id %><br />
+            <%=f.collection_select(:vehicle_id, Vehicle.all, :id, :model) %>
+            <!--select("vehicle", "vehicle_id", @vehicles.each {|v| [ "#{v.make v.model}", v.vehicle_id ] })-->
+          </div>
+          <div class="control-group">
+            <%= f.label :mileage, :class => 'control-label' %><br />
+            <%= f.number_field :mileage, :class => 'input-large' %>
+          </div>
+          <div class="control-group">
+            <%= f.label :item, :class => 'control-label' %><br />
+            <%= f.text_field :item, :class => 'input-large' %>
+          </div>
+          <div class="control-group">
+            <%= f.label :item_description, :class => 'control-label' %><br />
+            <%= f.text_area :item_description, :size=> '30x5' %>
+          </div>
+          <div class="control-group">
+            <%= f.label :maintenance_date, :class => 'control-label' %><br />
+            <%= f.date_select :maintenance_date, :start_year => Time.now.year - 7 %>
+          </div>
+          <div class="control-group">
+            <%= f.label :repair_shop, :class => 'control-label' %><br />
+            <%= f.text_field :repair_shop, :class => 'input-large' %>
+          </div>
+          <div class="control-group">
+            <%= f.label :repair_shop_location, :class => 'control-label' %><br />
+            <%= f.text_field :repair_shop_location, :class => 'input-large' %>
+          </div>
+          <div class="control-group">
+            <%= f.label :repair_shop_phone, :class => 'control-label' %><br />
+            <%= f.text_field :repair_shop_phone, :class => 'input-large' %>
+          </div>
+          <div class="control-group">
+            <%= f.label :maintenance_cost, :class => 'control-label' %><br />
+            <%= f.text_field :maintenance_cost, :class => 'input-large' %>
+          </div>
+          <div class="form-actions">
+            <%= f.submit 'Save' %>
+            <%= link_to 'Back', maintenance_histories_path, :class => 'btn btn-small' %>
+          </div>
+      <% end %>
+    </div>
+  </div> <!-- row-fluid -->
+</section>

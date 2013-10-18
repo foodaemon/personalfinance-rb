@@ -1,0 +1,164 @@
+<!-- Navbar
+================================================== -->
+<section id="stats">
+  <div class="well row">
+    <div class="col-2">
+      <div>
+        <span class="badge badge-success"><%= total_income %></span>
+      </div>
+      <div><small>Total income</small></div>
+    </div>
+    <div class="col-2">
+      <div>
+        <span class="badge badge-important"><%= total_expenses %></span>
+      </div>
+      <div><small>Total Expenses</small></div>
+    </div>
+    <div class="col-2">
+      <div>
+        <span class="badge badge-success"><%= income_this_year %></span>
+      </div>
+      <div><small>Income this year</small></div>
+    </div>
+    <div class="col-2">
+      <div><span class="badge badge-important"><%= expenses_this_year %></span></div>
+      <div><small>Expenses this year</small></div>
+    </div>
+
+    <div class="col-2">
+      <div><span class="badge badge-success"><%= income_this_month %></span></div>
+      <div><small>Income this month</small></div>
+    </div>
+    <div class="col-2">
+      <div><span class="badge badge-important"><%= expenses_this_month %></span></div>
+      <div><small>Expense this month</small></div>
+    </div>
+  </div>
+</section>
+<!-- Graph
+================================================== -->
+<section id="data_visualization">
+  <div class="sub-header">
+    <h3>Expenses</h3>
+  </div>
+  <div class="well row">
+    <div class="col-12">
+      <div id="chart_total_expenses"></div>
+    </div>
+  </div>
+
+  <div class="sub-header">
+    <h3>Income</h3>
+  </div>
+  <div class="well row">
+    <div class="col-12">
+      <div id="chart_total_income"></div>
+    </div>
+  </div>
+
+  <div class="sub-header">
+    <h3>This month</h3>
+  </div>
+  <div class="well row">
+    <div class="col-12">
+      <div id="chart_div"></div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var line1=[['2008-09-30 4:00PM',4], ['2008-10-30 4:00PM',6.5], ['2008-11-30 4:00PM',5.7], ['2008-12-30 4:00PM',9], ['2009-01-30 4:00PM',8.2]];
+        var plot1 = $.jqplot('chart_total_expenses', [line1], {
+            title:'Default Date Axis',
+            axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+            series:[{lineWidth:4, markerOptions:{style:'square'}}]
+        });
+
+        var line1=[['2008-09-30 4:00PM',4], ['2008-10-30 4:00PM',6.5], ['2008-11-30 4:00PM',5.7], ['2008-12-30 4:00PM',9], ['2009-01-30 4:00PM',8.2]];
+        var plot1 = $.jqplot('chart_total_income', [line1], {
+            title:'Default Date Axis',
+            axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
+            series:[{lineWidth:4, markerOptions:{style:'square'}}]
+        });
+    });
+</script>
+
+<!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+    $(document).on('ready page:change', function(){
+        drawChart();
+        drawTotalTransaction('Total Expenses', 'chart_total_expenses', false); // expenses
+        drawTotalTransaction('Total Income', 'chart_total_income', true); // income
+    });
+
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var date = new Date();
+        var jsonData = $.ajax({
+            type: 'GET',
+            url: '/dashboard/index.json',
+            dataType: 'JSON',
+            data: 'year='+ date.getFullYear() + '&month=' + date.getMonth(),
+            async: false
+        }).responseText;
+
+        var obj = jQuery.parseJSON(jsonData);
+        //var data = google.visualization.arrayToDataTable(obj);
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Amount');
+        data.addRows(obj);
+
+        var options = {
+            title: 'Expenses by Category',
+            legend: 'bottom',
+            is3D : 'true'
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+
+    function drawTotalTransaction(title, chart_div, is_income) {
+        var jsonData = $.ajax({
+            type: 'GET',
+            url: '/dashboard/total_transactions.json',
+            data: 'is_income=' + is_income ,
+            dataType: 'JSON',
+            async: false
+        }).responseText;
+
+        var result = jQuery.parseJSON(jsonData);
+        //var result=[['2008-09-30 4:00PM',4], ['2008-10-30 4:00PM',6.5], ['2008-11-30 4:00PM',5.7], ['2008-12-30 4:00PM',9], ['2009-01-30 4:00PM',8.2]];
+        $.jqplot(chart_div, [result], {
+            title: title,
+            axes:{
+                xaxis:{
+                    renderer:$.jqplot.DateAxisRenderer,
+                    tickOptions:{
+                        formatString:'%b&nbsp;%#d'
+                    }
+                },
+                yaxis:{
+                    tickOptions:{
+                        formatString:'$%.2f'
+                    }
+                }
+            },
+            highlighter: {
+                show: true,
+                sizeAdjust: 7.5
+            },
+            cursor: {
+                show: false
+            },
+            series:[{lineWidth:4, markerOptions:{style:'square'}}]
+        });
+    }
+</script>
+-->
