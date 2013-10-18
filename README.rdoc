@@ -1,3 +1,5 @@
 == README
 
 Personal Finance Application to track your income/expenses
+
+Dependencies: Ruby 2.x & Rails 4.x
