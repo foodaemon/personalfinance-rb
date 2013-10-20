@@ -59,7 +59,7 @@ Personalfinance::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css.scss, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( transactions.js .svg .eot .woff .ttf)
+  config.assets.precompile += %w( transactions.js typeahead.js .svg .eot .woff .ttf)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

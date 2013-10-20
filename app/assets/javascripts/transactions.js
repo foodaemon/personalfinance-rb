@@ -69,7 +69,6 @@ function drawTransactionsPieChart() {
 
 // jquery events
 $(document).ready(function() {
-    $('.selectpicker').selectpicker();
     populateYear();
     populateMonth();
 

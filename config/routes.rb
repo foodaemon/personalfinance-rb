@@ -1,5 +1,6 @@
 Personalfinance::Application.routes.draw do
   get 'transactions/description'
+  get 'transactions/merchant'
   get 'session/new'
   post 'session/create'
   get 'logout' => 'session#destroy', :as => 'logout'

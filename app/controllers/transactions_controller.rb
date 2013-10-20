@@ -39,6 +39,12 @@ class TransactionsController < ApplicationController
   def edit
   end
 
+  def merchant
+    search_param = params[:search]
+    merchants = Transaction.where('lower(description) LIKE ?', "%#{search_param.downcase}%").pluck(:description).uniq
+    render json: merchants.as_json(only: [:description])
+  end
+
   # POST /transactions
   # POST /transactions.json
   def create
